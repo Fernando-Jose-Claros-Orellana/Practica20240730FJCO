@@ -3,6 +3,7 @@ package com.fjco.Practica20240730FJCO.Servicios.Implementaciones;
 import com.fjco.Practica20240730FJCO.Modelo.ProductoFJCO;
 import com.fjco.Practica20240730FJCO.Respositorio.IProductoFJCORepository;
 import com.fjco.Practica20240730FJCO.Servicios.Interfaces.IProductoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -12,30 +13,30 @@ import java.util.Optional;
 
 @Service
 public class ProductoService implements IProductoService {
-
-    private IProductoFJCORepository prod;
+    @Autowired
+    private IProductoFJCORepository productoFJCORepository;
     @Override
     public Page<ProductoFJCO> buscarTodosPaginados(Pageable pageable) {
-        return prod.findAll(pageable);
+        return productoFJCORepository.findAll(pageable);
     }
 
     @Override
     public List<ProductoFJCO> obtenerTodos() {
-        return prod.findAll();
+        return productoFJCORepository.findAll();
     }
 
     @Override
     public Optional<ProductoFJCO> buscarPorId(Integer id) {
-        return prod.findById(id);
+        return productoFJCORepository.findById(id);
     }
 
     @Override
-    public ProductoFJCO crearOEditar(ProductoFJCO grupo) {
-        return prod.save(grupo);
+    public ProductoFJCO crearOEditar(ProductoFJCO productoFJCO) {
+        return productoFJCORepository.save(productoFJCO);
     }
 
     @Override
     public void eliminarPorId(Integer id) {
-        prod.deleteById(id);
+        productoFJCORepository.deleteById(id);
     }
 }

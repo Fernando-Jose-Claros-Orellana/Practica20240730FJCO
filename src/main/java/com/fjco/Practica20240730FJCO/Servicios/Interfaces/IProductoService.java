@@ -1,7 +1,6 @@
 package com.fjco.Practica20240730FJCO.Servicios.Interfaces;
 
 import com.fjco.Practica20240730FJCO.Modelo.ProductoFJCO;
-import com.fjco.Practica20240730FJCO.Servicios.Implementaciones.ProductoService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -15,7 +14,7 @@ public interface IProductoService {
 
     Optional<ProductoFJCO> buscarPorId(Integer id);
 
-    ProductoFJCO crearOEditar(ProductoFJCO grupo);
+    ProductoFJCO crearOEditar(ProductoFJCO producto);
 
     void eliminarPorId(Integer id);
 }

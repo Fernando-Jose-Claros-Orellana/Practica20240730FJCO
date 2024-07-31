@@ -3,7 +3,9 @@ package com.fjco.Practica20240730FJCO.Modelo;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -24,8 +26,8 @@ public class ProductoFJCO {
     private Double precioFJCO;
 
     @NotNull(message = "La fecha de vencimiento es requerida")
-    @Temporal(TemporalType.DATE)
-    private Date fechaVencimientoFJCO;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaVencimientoFJCO;
 
     @NotNull(message = "El estatus es requerido")
     private Byte estatusFJCO;
@@ -65,11 +67,11 @@ public class ProductoFJCO {
         this.precioFJCO = precioFJCO;
     }
 
-    public @NotNull(message = "La fecha de vencimiento es requerida") Date getFechaVencimientoFJCO() {
+    public @NotNull(message = "La fecha de vencimiento es requerida") LocalDate getFechaVencimientoFJCO() {
         return fechaVencimientoFJCO;
     }
 
-    public void setFechaVencimientoFJCO(@NotNull(message = "La fecha de vencimiento es requerida") Date fechaVencimientoFJCO) {
+    public void setFechaVencimientoFJCO(@NotNull(message = "La fecha de vencimiento es requerida") LocalDate fechaVencimientoFJCO) {
         this.fechaVencimientoFJCO = fechaVencimientoFJCO;
     }
 

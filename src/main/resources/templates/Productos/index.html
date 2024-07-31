@@ -1,7 +1,7 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="/layouts/_mainLayout">
+      layout:decorate="/Layout/_mainLayout">
 
 <div layout:fragment="content">
 
@@ -27,26 +27,34 @@
         </script>
     </div>
 
-    <h1>Listado de grupos</h1>
-    <a th:href="@{/grupos/create}" class="btn btn-outline-primary">Nuevo grupo</a>
+    <h1>Listado de productos</h1>
+    <a th:href="@{/Productos/create}" class="btn btn-outline-primary">Nuevo producto</a>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
             <th>Nombre</th>
             <th>Descripción</th>
+            <th>Precio</th>
+            <th>FechaVencimiento</th>
+            <th>Estatus</th>
+            <th>Existencia</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="item : ${grupos}">
+        <tr th:each="item : ${productos}">
             <td th:text="${item.id}"></td>
-            <td th:text="${item.nombre}"></td>
-            <td th:text="${item.descripcion}"></td>
+            <td th:text="${item.nombreFJCO}"></td>
+            <td th:text="${item.descripcionFJCO}"></td>
+            <td th:text="${item.precioFJCO}"></td>
+            <td th:text="${item.fechaVencimientoFJCO}"></td>
+            <td th:text="${item.estatusFJCO}"></td>
+            <td th:text="${item.existencia}"></td>
             <td>
-                <a th:href="@{/grupos/details/{id} (id = ${item.id}) }" class="btn btn-outline-secondary">Detalles</a> |
-                <a th:href="@{/grupos/edit/{id} (id = ${item.id}) }" class="btn btn-outline-info">Editar</a> |
-                <a th:href="@{/grupos/remove/{id} (id = ${item.id}) }" class="btn btn-outline-danger">Eliminar</a>
+                <a th:href="@{/Productos/details/{id} (id = ${item.id}) }" class="btn btn-outline-secondary">Detalles</a> |
+                <a th:href="@{/Productos/edit/{id} (id = ${item.id}) }" class="btn btn-outline-info">Editar</a> |
+                <a th:href="@{/Productos/remove/{id} (id = ${item.id}) }" class="btn btn-outline-danger">Eliminar</a>
             </td>
         </tr>
         </tbody>
@@ -55,7 +63,7 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item" th:each="pageNumber : ${pageNumbers}">
-                <a class="page-link" th:href="@{|/grupos?page=${pageNumber}|}" th:text="${pageNumber}"></a>
+                <a class="page-link" th:href="@{|/Productos?page=${pageNumber}|}" th:text="${pageNumber}"></a>
             </li>
         </ul>
     </nav>

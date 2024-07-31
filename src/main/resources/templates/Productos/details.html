@@ -1,24 +1,55 @@
+<!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="/layouts/_mainLayout">
+      layout:decorate="/Layout/_mainLayout">
 
 <div layout:fragment="content">
-    <h1>Detalles del grupo</h1>
-    <div>
-        <hr />
-        <dl class="row">
-            <dt class = "col-sm-2" >ID</dt>
-            <dd class = "col-sm-10" th:text="${grupo.id}"></dd>
-
-            <dt class = "col-sm-2">Nombre</dt>
-            <dd class = "col-sm-10" th:text="${grupo.nombre}"></dd>
-
-            <dt class = "col-sm-2">Descripción</dt>
-            <dd class = "col-sm-10" th:text="${grupo.descripcion}"></dd>
-        </dl>
-
-        <a th:href="@{/grupos/edit/{id} (id = ${grupo.id}) }" class="btn btn-outline-info">Editar</a> |
-        <a th:href="@{/grupos}">Regresar</a>
-    </div>
+    <h1>Detalles del Producto</h1>
+    <form th:object="${producto}">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombreFJCO}" id="nombre" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" th:field="*{descripcionFJCO}" id="descripcion" cols="12" rows="3" readonly></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" th:field="*{precioFJCO}" id="precio" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                    <input type="date" class="form-control" th:field="*{fechaVencimientoFJCO}" id="fechaVencimiento" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="estatus">Estatus</label>
+                    <input type="text" class="form-control" th:field="*{estatusFJCO}" id="estatus" readonly>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="existencia">Existencia</label>
+                    <input type="number" class="form-control" th:field="*{existencia}" id="existencia" readonly>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <a th:href="@{/Productos}" class="btn btn-outline-primary">Regresar</a>
+    </form>
 </div>
