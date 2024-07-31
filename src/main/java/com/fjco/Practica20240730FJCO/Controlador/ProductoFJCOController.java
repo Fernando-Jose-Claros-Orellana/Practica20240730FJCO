@@ -58,7 +58,7 @@ private IProductoService productoService;
         }
 
         productoService.crearOEditar(productoFJCO);
-        attributes.addFlashAttribute("msg", "Grupo creado correctamente");
+        attributes.addFlashAttribute("msg", "Producto creado correctamente");
         return "redirect:/Productos";
     }
 
@@ -86,7 +86,7 @@ private IProductoService productoService;
     @PostMapping("/delete")
     public String delete(ProductoFJCO productoFJCO, RedirectAttributes attributes){
         productoService.eliminarPorId(productoFJCO.getId());
-        attributes.addFlashAttribute("msg", "Grupo eliminado correctamente");
+        attributes.addFlashAttribute("msg", "Producto eliminado correctamente");
         return "redirect:/Productos";
     }
 
